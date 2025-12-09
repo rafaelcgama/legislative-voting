@@ -6,7 +6,7 @@ from main import merge_votes, compute_legislator_support, compute_bill_support_c
 
 
 def make_mock_data():
-    """Create a minimal, consistent set of mock data for tests."""
+    """Create a minimal, consistent set of mock input for tests."""
 
     # bills: 2 bills, one with sponsor, one without
     bills = pd.DataFrame(
@@ -209,13 +209,13 @@ def test_main_runs_end_to_end(tmp_path, monkeypatch):
     from main import main  # adjust import if file name differs
 
     monkeypatch.chdir(tmp_path)  # run in isolated temp directory
-    os.makedirs("data", exist_ok=True)
+    os.makedirs("input", exist_ok=True)
 
     # Write minimal input CSVs
-    pd.DataFrame([{"id": 10, "title": "Bill A", "sponsor_id": None}]).to_csv("data/bills.csv", index=False)
-    pd.DataFrame([{"id": 1, "name": "Biden"}]).to_csv("data/legislators.csv", index=False)
-    pd.DataFrame([{"id": 1, "legislator_id": 1, "vote_id": 100, "vote_type": 1}]).to_csv("data/vote_results.csv", index=False)
-    pd.DataFrame([{"id": 100, "bill_id": 10}]).to_csv("data/votes.csv", index=False)
+    pd.DataFrame([{"id": 10, "title": "Bill A", "sponsor_id": None}]).to_csv("input/bills.csv", index=False)
+    pd.DataFrame([{"id": 1, "name": "Biden"}]).to_csv("input/legislators.csv", index=False)
+    pd.DataFrame([{"id": 1, "legislator_id": 1, "vote_id": 100, "vote_type": 1}]).to_csv("input/vote_results.csv", index=False)
+    pd.DataFrame([{"id": 100, "bill_id": 10}]).to_csv("input/votes.csv", index=False)
 
     main()  # now everything runs
 
