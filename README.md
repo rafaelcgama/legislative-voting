@@ -1,4 +1,4 @@
-# 🏛 Quorum Coding Challenge
+# 🏛 Legislative Voting Project
 
 This repository processes legislative voting records and produces two summary outputs:
 
